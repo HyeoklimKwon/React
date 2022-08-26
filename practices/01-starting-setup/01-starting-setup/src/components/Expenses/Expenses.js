@@ -10,7 +10,8 @@ function Expenses(props) {
       setFilteredYear(filterYear)
       console.log(filterYear);
     }
-
+    // 보통 제어된 컴포넌트라고 함은 바인딩이 되어있다는 뜻 부모 컴포넌트로부터 값을 받음 로직은 부모 컴포넌트 Expense 컴포넌트는 Expense.filer 
+    // dumb, presentational, stateless 컴포넌트는 state를 사용하지 않고 단순히 데이터만 나타내는 컴포넌트를 의미하고 smart, stateful 컴포넌트는 State를 사용하여 값이 동적이게 나타나는 컴포넌트를 의미한다.
     return (
     <div>
     <Card className="expenses">    
