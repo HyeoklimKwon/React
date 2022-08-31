@@ -1,8 +1,9 @@
 import Card from "../UI/Card";
-import ExpenseItem from "./ExpenseItem";
 import './Expenses.css'
 import ExpenseFilter from "./ExpenseFilter"
 import { useState } from 'react'
+import ExpensesList from "./ExpensesList";
+import ExpensesChart from './ExpensesChart'
 
 function Expenses(props) {
     const [filteredYear, setFilteredYear] = useState('2021');    
@@ -16,26 +17,14 @@ function Expenses(props) {
     const filteredExpenses = props.items.filter(expense => {
       return expense.date.getFullYear().toString() === filteredYear
     })
-    let expensesContent = <p>No expenses found</p>;
-    // 이렇게도 생성이 가능합니다. 
-    if (filteredExpenses.length > 0) {
-      expensesContent =  props.items.filter(expense => expense.date.getFullYear().toString() === filteredYear).map(
-        expense =>          
-            <ExpenseItem 
-            key = {expense.id} 
-            // key를 추가하는 이유는 key가 없으면 배열을 다시 다 확인하는 작업을 거쳐야 하기 떄문 key를 사용해서 새로운 객체를 추가한다.
-            title = {expense.title} 
-            amount = {expense.amount} 
-            date = {expense.date}/>  
-        )
-      
-    }
+    
 
     return (
     <div>
     <Card className="expenses">    
     <ExpenseFilter selected= {filteredYear} onSaveFilterYear = {onSaveFilterYearHandler}/>
-      { expensesContent }
+      <ExpensesChart expenses = {filteredExpenses} />
+      <ExpensesList items = {filteredExpenses}/>
       {/* {filteredExpenses.length === 0 && <p>No expenses found</p>} */}
       {/* {filteredExpenses.length === 0 ? <p>No expenses found</p> : 
       props.items.filter(expense => expense.date.getFullYear().toString() === filteredYear).map(
