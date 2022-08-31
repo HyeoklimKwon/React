@@ -11,7 +11,7 @@ const ExpenseForm = (props) => {
     //     enteredTitle: '',
     //     enteredAmount: '',
     //     enteredDate: ''
-    // });
+    // }); 
 
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
@@ -39,6 +39,7 @@ const ExpenseForm = (props) => {
         //     enteredDate: event.target.value
         // })
     }
+    
     const submitHandler = (event) => {
         event.preventDefault();
 
@@ -50,10 +51,11 @@ const ExpenseForm = (props) => {
         props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredAmount('');
-        setEnteredDate('');
+        setEnteredDate('');       
     }
 
     return <form onSubmit={submitHandler}>
+        
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
                 <label>Title</label>
@@ -75,6 +77,8 @@ const ExpenseForm = (props) => {
             </div>
         </div>
         <div className='new-expense__actions'>
+            <button type='button' onClick={props.onCancel}>Cancel</button>
+            {/* type을 button으로 둔 것은 submit을 막기 위해 */}
             <button type='submit'>Add Expense</button>
          
         </div>

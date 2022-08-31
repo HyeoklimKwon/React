@@ -21,9 +21,10 @@ function ExpenseItem(props) {
     <Card className='expense-item'>
         <ExpenseDate date = {props.date} ></ExpenseDate>       
         <div className='expense-item__description'>
-            <h2>{ title }</h2>
+            <h2>{ props.title }</h2>
+            {/* title로 쳐서 이게 잘 안됐었음 기억하자 */}
             <ExpenseAmount amount = {props.amount}/>            
-        </div>
+        </div>        
         <button onClick={clickHandler}>Change Title</button>
         {/* 만약에 clickHanler()로 두면 클릭했을때 실행이 아니라 JSX가 실행됐으러때, 실행되고 리턴 값을 이미 가지고 있는 상태가 된다.  */}
     </Card>
